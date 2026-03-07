@@ -182,22 +182,11 @@
             overflow: hidden;
         }
 
-        .story-bg-img-blur {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('https://mercacol.com.co/wp-content/uploads/2026/03/IMG_5985.jpeg');
-            background-size: cover;
-            background-position: center;
-            filter: blur(20px);
-            transform: scale(1.1);
-            z-index: 1;
-        }
-
         .story-bg-img {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             width: 100%; height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             z-index: 2;
         }
 
@@ -866,8 +855,244 @@
             font-size: 0.85rem;
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 21, 25, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background: linear-gradient(145deg, #1e2028, #252730);
+            border-radius: 32px;
+            border: 1px solid rgba(229, 141, 87, 0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.05);
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(229, 141, 87, 0.3);
+            color: var(--gold-light);
+            transform: rotate(90deg);
+        }
+
+        .modal-image-col {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20, 21, 25, 0.5);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .modal-image-col img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .modal-info-col {
+            flex: 1.2;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-tag {
+            align-self: flex-start;
+            background: rgba(229, 141, 87, 0.15);
+            color: var(--gold);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(229, 141, 87, 0.3);
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .modal-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .modal-price span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .modal-desc {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .modal-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(20, 21, 25, 0.4);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .spec-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .spec-value {
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .spec-value i {
+            color: var(--gold);
+        }
+
+        .modal-buy-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg-dark);
+            border: none;
+            padding: 18px 32px;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(229, 141, 87, 0.3);
+            text-decoration: none;
+        }
+
+        .modal-buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(229, 141, 87, 0.4);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .modal-container {
+                flex-direction: column;
+                border-radius: 24px;
+            }
+            .modal-image-col {
+                padding: 30px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            .modal-image-col img {
+                max-width: 200px;
+            }
+            .modal-info-col {
+                padding: 30px 20px;
+            }
+            .modal-title {
+                font-size: 1.8rem;
+            }
+            .modal-price {
+                font-size: 1.6rem;
+            }
+            .modal-specs {
+                grid-template-columns: 1fr;
+            }
+            .modal-close {
+                top: 15px;
+                right: 15px;
+            }
             .panel-title { font-size: 2.5rem; }
             .panel-text { font-size: 1rem; }
             .section-title { font-size: 2rem; }
@@ -974,7 +1199,6 @@
     </div>
 
     <section class="story-section">
-        <div class="story-bg-img-blur"></div>
         <img src="https://mercacol.com.co/wp-content/uploads/2026/03/IMG_5985.jpeg" alt="Historia de Origen Special" class="story-bg-img">
         <div class="story-overlay"></div>
         <div class="story-content anim-hidden">
@@ -1188,6 +1412,48 @@
         </div>
     </footer>
 
+    <!-- Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-container">
+            <button class="modal-close" id="closeModalBtn"><i class="ph ph-x"></i></button>
+            <div class="modal-image-col">
+                <img id="modalImg" src="" alt="Producto">
+            </div>
+            <div class="modal-info-col">
+                <div class="modal-tag" id="modalTag"><i class="ph ph-crown"></i> PREMIUM</div>
+                <h2 class="modal-title" id="modalTitle">Origen Special</h2>
+                <p class="modal-subtitle" id="modalSubtitle">Tueste Medio • Grano Entero</p>
+                <div class="modal-price" id="modalPrice"><span>$</span> 0</div>
+                <p class="modal-desc" id="modalDesc">
+                    Disfruta de la mejor calidad con nuestro café premium. Cultivado en las montañas del Cauca para brindar una experiencia sensorial inigualable con notas a chocolate y cítricos.
+                </p>
+
+                <div class="modal-specs">
+                    <div class="spec-item">
+                        <span class="spec-label">Origen</span>
+                        <span class="spec-value"><i class="ph ph-map-pin"></i> Cauca, Colombia</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Altitud</span>
+                        <span class="spec-value"><i class="ph ph-mountains"></i> 1.700 m.s.n.m</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Proceso</span>
+                        <span class="spec-value"><i class="ph ph-drop"></i> Lavado</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Puntaje</span>
+                        <span class="spec-value"><i class="ph ph-star"></i> 86 Puntos SCA</span>
+                    </div>
+                </div>
+
+                <a href="#" class="modal-buy-btn">
+                    <i class="ph ph-shopping-cart"></i> Añadir al Carrito
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Seleccionar todos los elementos que queremos animar
@@ -1214,6 +1480,89 @@
             }, observerOptions);
 
             observerElements.forEach(el => observer.observe(el));
+
+            // Product Modal Logic
+            const modal = document.getElementById('productModal');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const productCards = document.querySelectorAll('.app-product-card');
+
+            // Modal Elements to Update
+            const modalImg = document.getElementById('modalImg');
+            const modalTag = document.getElementById('modalTag');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalSubtitle = document.getElementById('modalSubtitle');
+            const modalPrice = document.getElementById('modalPrice');
+
+            // Product Data
+            const productsData = [
+                {
+                    id: 1,
+                    title: 'Origen Special 250g',
+                    subtitle: 'Tueste Medio • Grano Entero',
+                    price: '35.000',
+                    tagIcon: 'ph-crown',
+                    tagText: 'PREMIUM',
+                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg'
+                },
+                {
+                    id: 2,
+                    title: 'Origen Special 500g',
+                    subtitle: 'Tueste Medio • Molido',
+                    price: '65.000',
+                    tagIcon: 'ph-star',
+                    tagText: 'MÁS VENDIDO',
+                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg'
+                },
+                {
+                    id: 3,
+                    title: 'Origen Special 1kg',
+                    subtitle: 'Tueste Oscuro • Grano Entero',
+                    price: '120.000',
+                    tagIcon: 'ph-timer',
+                    tagText: 'LIMITADO',
+                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg'
+                }
+            ];
+
+            // Open modal on click
+            productCards.forEach((card, index) => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    const data = productsData[index];
+                    if (data) {
+                        modalTitle.textContent = data.title;
+                        modalSubtitle.textContent = data.subtitle;
+                        modalPrice.innerHTML = `<span>$</span> ${data.price}`;
+                        modalTag.innerHTML = `<i class="ph ${data.tagIcon}"></i> ${data.tagText}`;
+                        modalImg.src = data.imgSrc;
+
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    }
+                });
+            });
+
+            // Close modal
+            const closeModal = () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            };
+
+            closeBtn.addEventListener('click', closeModal);
+
+            // Close when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
         });
     </script>
 </body>
