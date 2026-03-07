@@ -172,14 +172,53 @@
         .story-section {
             position: relative;
             z-index: 15;
-            background: var(--bg-dark);
             padding: 100px 5%;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .story-bg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .story-bg-img {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            position: sticky;
+            top: 0;
+            opacity: 0.8; /* Professional clarity */
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(20, 21, 25, 0.5); /* Overlay to make text readable */
+            z-index: 1;
         }
 
         .story-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
+            background: rgba(20, 21, 25, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(229, 141, 87, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .section-title {
@@ -286,25 +325,51 @@
             position: relative;
             z-index: 22;
             padding: 100px 5%;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
-        .benefits-bg-img {
+        .benefits-bg-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
             z-index: 0;
+            overflow: hidden;
+            background: var(--bg-dark);
+        }
+
+        .benefits-bg-blur {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            filter: blur(25px);
+            opacity: 0.4;
+            transform: scale(1.1);
+        }
+
+        .benefits-bg-img {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: contain;
+            opacity: 0.95;
+            margin-top: -100vh;
         }
 
         .benefits-parallax::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(20, 21, 25, 0.4); /* Dark overlay reduced opacity */
+            background: rgba(20, 21, 25, 0.2);
             z-index: 1;
+            pointer-events: none;
         }
 
         .benefits-content {
@@ -591,52 +656,42 @@
 
         /* Glowing CTA Button */
         .hero-buy-btn {
-            margin-top: 30px;
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 1rem;
             padding: 15px 40px;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
         }
 
         .btn-glow {
-            display: inline-block;
-            padding: 18px 50px;
-            background: linear-gradient(45deg, var(--gold-dark), var(--gold));
-            color: var(--bg-dark);
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
             border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
+            text-transform: none;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            border: none;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             cursor: pointer;
         }
 
-        .btn-glow::after {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: rgba(255,255,255,0.2);
-            transform: rotate(45deg);
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-
         .btn-glow:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
-        }
-
-        .btn-glow:hover::after {
-            opacity: 1;
-            left: 100%;
+            transform: translateX(-50%) translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4), 0 0 20px rgba(229, 141, 87, 0.3);
+            color: var(--gold-light);
         }
 
         /* Animaciones JS Classes */
@@ -832,8 +887,8 @@
             <div class="panel-content anim-hidden">
                 <h1 class="panel-title">El Oro de Colombia</h1>
                 <p class="panel-text" style="margin-bottom: 30px;">Descubre el alma del Cauca en cada taza. Un café de origen, cultivado en tierras ancestrales y acariciado por las nubes.</p>
-                <a href="#comprar" class="btn-glow hero-buy-btn">Comprar Ahora</a>
             </div>
+            <a href="#comprar" class="btn-glow hero-buy-btn"><i class="ph ph-shopping-bag"></i> Comprar Ahora</a>
         </section>
         
         <section class="panel bg-2">
@@ -845,9 +900,12 @@
     </div>
 
     <section class="story-section">
+        <div class="story-bg-container">
+            <img src="https://mercacol.com.co/wp-content/uploads/2026/03/IMG_5985.jpeg" alt="Historia de Origen Special" class="story-bg-img">
+        </div>
         <div class="story-content anim-hidden">
             <h2 class="section-title">Nuestra Historia</h2>
-            <p class="story-text">
+            <p class="story-text" style="color: var(--text-main);">
                 En el corazón de las montañas del Cauca, donde la tierra es fértil y el clima es un regalo divino, nace <strong>Origen Special</strong>. No somos solo una marca de café; somos el trabajo de manos campesinas, de familias que han dedicado generaciones a perfeccionar el arte del cultivo. Cada grano cuenta una historia de pasión, de madrugadas frías y de un respeto absoluto por la naturaleza. Nuestro café es 100% colombiano, un tributo líquido a la riqueza de nuestra tierra.
             </p>
         </div>
@@ -891,7 +949,10 @@
 
     <!-- Nueva sección de beneficios adicionales -->
     <section class="benefits-parallax">
-        <img src="https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg" alt="Beneficios de Origen Special" class="benefits-bg-img">
+        <div class="benefits-bg-container">
+            <img src="https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg" class="benefits-bg-blur" alt="" aria-hidden="true">
+            <img src="https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg" alt="Beneficios de Origen Special" class="benefits-bg-img">
+        </div>
         <div class="benefits-content">
             <div class="benefits-header anim-hidden">
                 <h2 class="section-title">Más allá de la taza</h2>
