@@ -175,11 +175,51 @@
             background: var(--bg-dark);
             padding: 100px 5%;
             text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .story-bg-img-blur {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://mercacol.com.co/wp-content/uploads/2026/03/IMG_5985.jpeg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px);
+            transform: scale(1.1);
+            z-index: 1;
+        }
+
+        .story-bg-img {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100%; height: 100%;
+            object-fit: contain;
+            z-index: 2;
+        }
+
+        .story-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(20, 21, 25, 0.6);
+            z-index: 3;
         }
 
         .story-content {
+            position: relative;
+            z-index: 4;
             max-width: 800px;
             margin: 0 auto;
+            background: rgba(37, 39, 48, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(229, 141, 87, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .section-title {
@@ -287,6 +327,21 @@
             z-index: 22;
             padding: 100px 5%;
             overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .benefits-bg-img-blur {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(20px);
+            transform: scale(1.1);
+            z-index: 0;
         }
 
         .benefits-bg-img {
@@ -295,23 +350,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: 0;
+            object-fit: contain;
+            z-index: 1;
         }
 
         .benefits-parallax::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(20, 21, 25, 0.4); /* Dark overlay reduced opacity */
-            z-index: 1;
+            background: rgba(20, 21, 25, 0.65); /* Dark overlay for better clarity and professional look */
+            z-index: 2;
         }
 
         .benefits-content {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .benefits-header {
@@ -591,52 +647,65 @@
 
         /* Glowing CTA Button */
         .hero-buy-btn {
-            margin-top: 30px;
-            font-size: 1rem;
-            padding: 15px 40px;
+            position: absolute;
+            bottom: 12vh;
+            left: 50%;
+            transform: translateX(-50%);
             text-decoration: none;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            z-index: 20;
         }
 
         .btn-glow {
-            display: inline-block;
-            padding: 18px 50px;
-            background: linear-gradient(45deg, var(--gold-dark), var(--gold));
-            color: var(--bg-dark);
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-decoration: none;
+            padding: 18px 45px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 500;
             border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            border: none;
+            letter-spacing: 0.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
             cursor: pointer;
+            overflow: hidden;
+            white-space: nowrap;
         }
 
-        .btn-glow::after {
+        .btn-glow i {
+            font-size: 1.4rem;
+            color: var(--gold-light);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-glow::before {
             content: '';
             position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: rgba(255,255,255,0.2);
-            transform: rotate(45deg);
-            transition: all 0.3s ease;
-            opacity: 0;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
         }
 
         .btn-glow:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(229, 141, 87, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(229, 141, 87, 0.2);
+            transform: translateX(-50%) translateY(-5px);
         }
 
-        .btn-glow:hover::after {
-            opacity: 1;
+        .btn-glow:hover::before {
             left: 100%;
+        }
+
+        .btn-glow:hover i {
+            transform: scale(1.15) rotate(-10deg);
         }
 
         /* Animaciones JS Classes */
@@ -832,8 +901,11 @@
             <div class="panel-content anim-hidden">
                 <h1 class="panel-title">El Oro de Colombia</h1>
                 <p class="panel-text" style="margin-bottom: 30px;">Descubre el alma del Cauca en cada taza. Un café de origen, cultivado en tierras ancestrales y acariciado por las nubes.</p>
-                <a href="#comprar" class="btn-glow hero-buy-btn">Comprar Ahora</a>
             </div>
+            <a href="#comprar" class="btn-glow hero-buy-btn">
+                <span>Comprar Ahora</span>
+                <i class="ph ph-coffee"></i>
+            </a>
         </section>
         
         <section class="panel bg-2">
@@ -845,6 +917,9 @@
     </div>
 
     <section class="story-section">
+        <div class="story-bg-img-blur"></div>
+        <img src="https://mercacol.com.co/wp-content/uploads/2026/03/IMG_5985.jpeg" alt="Historia de Origen Special" class="story-bg-img">
+        <div class="story-overlay"></div>
         <div class="story-content anim-hidden">
             <h2 class="section-title">Nuestra Historia</h2>
             <p class="story-text">
@@ -891,6 +966,7 @@
 
     <!-- Nueva sección de beneficios adicionales -->
     <section class="benefits-parallax">
+        <div class="benefits-bg-img-blur"></div>
         <img src="https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg" alt="Beneficios de Origen Special" class="benefits-bg-img">
         <div class="benefits-content">
             <div class="benefits-header anim-hidden">
