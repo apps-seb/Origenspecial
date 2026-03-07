@@ -188,7 +188,7 @@
             background-image: url('https://mercacol.com.co/wp-content/uploads/2026/03/IMG_5985.jpeg');
             background-size: cover;
             background-position: center;
-            filter: blur(8px);
+            filter: blur(20px);
             transform: scale(1.1);
             z-index: 1;
         }
@@ -204,7 +204,7 @@
         .story-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(20, 21, 25, 0.5);
+            background: rgba(20, 21, 25, 0.6);
             z-index: 3;
         }
 
@@ -213,8 +213,13 @@
             z-index: 4;
             max-width: 800px;
             margin: 0 auto;
+            background: rgba(37, 39, 48, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 40px;
-            /* Se eliminó la tarjeta/fondo para que se vea la imagen de fondo */
+            border-radius: 24px;
+            border: 1px solid rgba(229, 141, 87, 0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .section-title {
@@ -334,7 +339,7 @@
             background-image: url('https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg');
             background-size: cover;
             background-position: center;
-            filter: blur(8px);
+            filter: blur(20px);
             transform: scale(1.1);
             z-index: 0;
         }
@@ -353,7 +358,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(20, 21, 25, 0.6); /* Dark overlay for better clarity and professional look */
+            background: rgba(20, 21, 25, 0.65); /* Dark overlay for better clarity and professional look */
             z-index: 2;
         }
 
@@ -643,7 +648,7 @@
         /* Glowing CTA Button */
         .hero-buy-btn {
             position: absolute;
-            bottom: 18vh;
+            bottom: 12vh;
             left: 50%;
             transform: translateX(-50%);
             text-decoration: none;
