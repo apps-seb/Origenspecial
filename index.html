@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Origen Special | Premium Colombian Coffee</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         :root {
@@ -143,6 +147,7 @@
             object-fit: cover;
             z-index: 1;
             pointer-events: none;
+            transition: opacity 0.5s ease;
         }
 
         .panel-content {
@@ -201,6 +206,7 @@
             object-fit: cover;
             z-index: 2;
             pointer-events: none;
+            transition: opacity 0.5s ease;
         }
 
         .story-overlay {
@@ -1193,7 +1199,7 @@
 
     <div class="parallax-container">
         <section class="panel bg-1">
-            <video class="hero-video" autoplay loop muted playsinline>
+            <video class="hero-video lazy-video" loop muted playsinline preload="none" poster="https://mercacol.com.co/wp-content/uploads/2026/03/e6fc9fb7-bbce-453b-afe9-acf78283c8db.jpeg">
                 <source src="https://mercacol.com.co/wp-content/uploads/2026/03/gemini_generated_video_60C3A431.mov" type="video/mp4">
             </video>
             
@@ -1208,7 +1214,7 @@
         </section>
         
         <section class="panel bg-2">
-            <video class="hero-video" autoplay loop muted playsinline>
+            <video class="hero-video lazy-video" loop muted playsinline preload="none" poster="https://mercacol.com.co/wp-content/uploads/2026/03/0c898dc9-71d6-4c23-bcac-54909a748715.jpeg">
                 <source src="https://mercacol.com.co/wp-content/uploads/2026/03/gemini_generated_video_11F92E45-1.mov" type="video/mp4">
             </video>
 
@@ -1220,7 +1226,7 @@
     </div>
 
     <section class="story-section">
-        <video class="story-bg-img" autoplay loop muted playsinline>
+        <video class="story-bg-img lazy-video" loop muted playsinline preload="none" poster="https://mercacol.com.co/wp-content/uploads/2026/03/IMG_5985.jpeg">
             <source src="https://mercacol.com.co/wp-content/uploads/2026/03/gemini_generated_video_8F7B4BAF.mov" type="video/mp4">
         </video>
         
@@ -1271,7 +1277,7 @@
 
     <section class="benefits-parallax">
         <div class="benefits-bg-img-blur"></div>
-        <img src="https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg" alt="Beneficios de Origen Special" class="benefits-bg-img">
+        <img src="https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg" alt="Beneficios de Origen Special" class="benefits-bg-img" loading="lazy">
         <div class="benefits-content">
             <div class="benefits-header anim-hidden">
                 <h2 class="section-title">Más allá de la taza</h2>
@@ -1314,7 +1320,7 @@
             <div class="app-product-card anim-hidden" style="transition-delay: 0.1s;">
                 <div class="app-product-image-wrap">
                     <span class="app-tag"><i class="ph ph-crown"></i> PREMIUM</span>
-                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg" alt="Bolsa de Café 250g">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg" alt="Bolsa de Café 250g" loading="lazy">
                 </div>
                 <div class="app-product-info">
                     <h3>Origen Special 250g</h3>
@@ -1333,7 +1339,7 @@
             <div class="app-product-card anim-hidden" style="transition-delay: 0.2s;">
                 <div class="app-product-image-wrap">
                     <span class="app-tag"><i class="ph ph-star"></i> MÁS VENDIDO</span>
-                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg" alt="Bolsa de Café 500g">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg" alt="Bolsa de Café 500g" loading="lazy">
                 </div>
                 <div class="app-product-info">
                     <h3>Origen Special 500g</h3>
@@ -1352,7 +1358,7 @@
             <div class="app-product-card anim-hidden" style="transition-delay: 0.3s;">
                 <div class="app-product-image-wrap">
                     <span class="app-tag"><i class="ph ph-timer"></i> LIMITADO</span>
-                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg" alt="Bolsa de Café 1000g">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg" alt="Bolsa de Café 1000g" loading="lazy">
                 </div>
                 <div class="app-product-info">
                     <h3>Origen Special 1kg</h3>
@@ -1379,10 +1385,10 @@
         <div class="flip-container anim-zoom">
             <div class="flipper">
                 <div class="front">
-                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg" alt="Origen Special Empaque Frontal">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg" alt="Origen Special Empaque Frontal" loading="lazy">
                 </div>
                 <div class="back">
-                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/24fbf367-db2b-44cf-97a1-225e2416b49d.jpeg" alt="Origen Special Detalles del Producto">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/24fbf367-db2b-44cf-97a1-225e2416b49d.jpeg" alt="Origen Special Detalles del Producto" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1474,25 +1480,21 @@
     </div>
 
     <script>
+        // Lógica de Animaciones CSS
         document.addEventListener('DOMContentLoaded', () => {
-            // Seleccionar todos los elementos que queremos animar
             const observerElements = document.querySelectorAll('.anim-hidden, .anim-zoom');
             
-            // Configurar el Intersection Observer
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.15 // El elemento aparecerá cuando el 15% sea visible
+                threshold: 0.15
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('anim-show');
-                        // Opcional: Descomentar la siguiente línea si quieres que la animación ocurra solo la primera vez
-                        // observer.unobserve(entry.target); 
                     } else {
-                        // Al quitar la clase, la animación se repite al subir y bajar el scroll
                         entry.target.classList.remove('anim-show');
                     }
                 });
@@ -1505,14 +1507,12 @@
             const closeBtn = document.getElementById('closeModalBtn');
             const productCards = document.querySelectorAll('.app-product-card');
 
-            // Modal Elements to Update
             const modalImg = document.getElementById('modalImg');
             const modalTag = document.getElementById('modalTag');
             const modalTitle = document.getElementById('modalTitle');
             const modalSubtitle = document.getElementById('modalSubtitle');
             const modalPrice = document.getElementById('modalPrice');
 
-            // Product Data
             const productsData = [
                 {
                     id: 1,
@@ -1543,7 +1543,6 @@
                 }
             ];
 
-            // Open modal on click
             productCards.forEach((card, index) => {
                 card.style.cursor = 'pointer';
                 card.addEventListener('click', () => {
@@ -1556,31 +1555,63 @@
                         modalImg.src = data.imgSrc;
 
                         modal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; // Prevent scrolling
+                        document.body.style.overflow = 'hidden'; 
                     }
                 });
             });
 
-            // Close modal
             const closeModal = () => {
                 modal.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Restore scrolling
+                document.body.style.overflow = 'auto'; 
             };
 
             closeBtn.addEventListener('click', closeModal);
 
-            // Close when clicking outside
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     closeModal();
                 }
             });
 
-            // Close with Escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal.classList.contains('active')) {
                     closeModal();
                 }
+            });
+        });
+
+        // Optimización Premium de UX: Lazy Loading Inteligente para Videos
+        window.addEventListener('load', () => {
+            const videos = document.querySelectorAll('.lazy-video');
+            
+            // IntersectionObserver para reproducir videos solo cuando son visibles
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Cambiar preload a auto y reproducir suavemente
+                        if (entry.target.preload === 'none') {
+                            entry.target.preload = 'auto';
+                        }
+                        const playPromise = entry.target.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(error => {
+                                // Evitar errores en consola si el navegador bloquea el autoplay inicial
+                                console.log("La reproducción automática fue pausada o bloqueada por el navegador.");
+                            });
+                        }
+                    } else {
+                        // Pausar el video cuando ya no se ve para ahorrar recursos del dispositivo
+                        entry.target.pause();
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '50px', // Empieza a cargar un poco antes de que entre a pantalla
+                threshold: 0.1
+            });
+
+            videos.forEach(video => {
+                videoObserver.observe(video);
             });
         });
     </script>
