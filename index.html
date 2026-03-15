@@ -133,6 +133,18 @@
             z-index: 2;
         }
 
+        /* Hero Video Styles */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .panel-content {
             position: relative;
             z-index: 3;
@@ -188,6 +200,7 @@
             width: 100%; height: 100%;
             object-fit: cover;
             z-index: 2;
+            pointer-events: none;
         }
 
         .story-overlay {
@@ -1180,6 +1193,10 @@
 
     <div class="parallax-container">
         <section class="panel bg-1">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="https://mercacol.com.co/wp-content/uploads/2026/03/gemini_generated_video_60C3A431.mov" type="video/mp4">
+            </video>
+            
             <div class="panel-content anim-hidden">
                 <h1 class="panel-title">El Oro de Colombia</h1>
                 <p class="panel-text" style="margin-bottom: 30px;">Descubre el alma del Cauca en cada taza. Un café de origen, cultivado en tierras ancestrales y acariciado por las nubes.</p>
@@ -1191,6 +1208,10 @@
         </section>
         
         <section class="panel bg-2">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="https://mercacol.com.co/wp-content/uploads/2026/03/gemini_generated_video_11F92E45-1.mov" type="video/mp4">
+            </video>
+
             <div class="panel-content anim-hidden">
                 <h2 class="panel-title">Selección Perfecta</h2>
                 <p class="panel-text">Recolectado a mano en su punto óptimo de maduración para garantizar una experiencia sensorial incomparable.</p>
@@ -1199,7 +1220,10 @@
     </div>
 
     <section class="story-section">
-        <img src="https://mercacol.com.co/wp-content/uploads/2026/03/IMG_5985.jpeg" alt="Historia de Origen Special" class="story-bg-img">
+        <video class="story-bg-img" autoplay loop muted playsinline>
+            <source src="https://mercacol.com.co/wp-content/uploads/2026/03/gemini_generated_video_8F7B4BAF.mov" type="video/mp4">
+        </video>
+        
         <div class="story-overlay"></div>
         <div class="story-content anim-hidden">
             <h2 class="section-title">Nuestra Historia</h2>
@@ -1245,7 +1269,6 @@
         </section>
     </div>
 
-    <!-- Nueva sección de beneficios adicionales -->
     <section class="benefits-parallax">
         <div class="benefits-bg-img-blur"></div>
         <img src="https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg" alt="Beneficios de Origen Special" class="benefits-bg-img">
@@ -1288,7 +1311,6 @@
         </div>
 
         <div class="app-products-grid">
-            <!-- Product Card 1 -->
             <div class="app-product-card anim-hidden" style="transition-delay: 0.1s;">
                 <div class="app-product-image-wrap">
                     <span class="app-tag"><i class="ph ph-crown"></i> PREMIUM</span>
@@ -1308,7 +1330,6 @@
                 </div>
             </div>
 
-            <!-- Product Card 2 -->
             <div class="app-product-card anim-hidden" style="transition-delay: 0.2s;">
                 <div class="app-product-image-wrap">
                     <span class="app-tag"><i class="ph ph-star"></i> MÁS VENDIDO</span>
@@ -1328,7 +1349,6 @@
                 </div>
             </div>
 
-            <!-- Product Card 3 -->
             <div class="app-product-card anim-hidden" style="transition-delay: 0.3s;">
                 <div class="app-product-image-wrap">
                     <span class="app-tag"><i class="ph ph-timer"></i> LIMITADO</span>
@@ -1412,7 +1432,6 @@
         </div>
     </footer>
 
-    <!-- Product Modal -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-container">
             <button class="modal-close" id="closeModalBtn"><i class="ph ph-x"></i></button>
