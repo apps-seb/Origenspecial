@@ -1082,7 +1082,161 @@
             background: linear-gradient(135deg, var(--gold-light), var(--gold));
         }
 
+        /* Caficultores Section */
+        .caficultores-section {
+            background: linear-gradient(135deg, var(--bg-dark), #1a1b22);
+            padding: 100px 5%;
+            position: relative;
+            z-index: 20;
+            overflow: hidden;
+            border-top: 1px solid rgba(229, 141, 87, 0.1);
+            border-bottom: 1px solid rgba(229, 141, 87, 0.1);
+        }
+
+        .caficultores-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(229, 141, 87, 0.03), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .caficultores-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .caficultores-header {
+            max-width: 500px;
+        }
+
+        .caficultores-tag {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: inline-flex;
+            margin-bottom: 20px;
+            background: rgba(229, 141, 87, 0.1);
+            border: 1px solid rgba(229, 141, 87, 0.2);
+            padding: 8px 16px;
+        }
+
+        .caficultores-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .caficultores-btn {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            display: inline-flex;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg-dark);
+            border: none;
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px rgba(229, 141, 87, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .caficultores-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(229, 141, 87, 0.5);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            color: var(--bg-dark); /* Ensure text remains dark on hover */
+        }
+
+        .caficultores-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .caficultores-btn::before {
+            display: none; /* Disable the global .btn-glow::before effect for this specific button */
+        }
+
+
+        .caficultores-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .caficultores-feature-card {
+            background: rgba(37, 39, 48, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px 24px;
+            transition: all 0.3s ease;
+        }
+
+        .caficultores-feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(37, 39, 48, 0.9);
+            border-color: rgba(229, 141, 87, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cf-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: inline-block;
+            background: rgba(229, 141, 87, 0.1);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .caficultores-feature-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .caficultores-feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
         /* Responsive */
+        @media (max-width: 992px) {
+            .caficultores-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .caficultores-header {
+                max-width: 100%;
+                text-align: center;
+            }
+            .caficultores-tag {
+                margin: 0 auto 20px;
+            }
+        }
+
         @media (max-width: 768px) {
             .modal-container {
                 flex-direction: column;
@@ -1140,6 +1294,12 @@
 
             .benefit-card p {
                 font-size: 0.95rem;
+            }
+            .caficultores-features {
+                grid-template-columns: 1fr;
+            }
+            .caficultores-section {
+                padding: 60px 5%;
             }
 
             .app-product-card {
@@ -1274,6 +1434,45 @@
             </div>
         </section>
     </div>
+
+    <section class="caficultores-section" id="caficultores">
+        <div class="caficultores-content">
+            <div class="caficultores-header anim-hidden">
+                <span class="app-tag caficultores-tag"><i class="ph ph-handshake"></i> EXCLUSIVO PARA PRODUCTORES</span>
+                <h2 class="section-title">Comunidad de Caficultores</h2>
+                <p class="caficultores-desc">
+                    Un espacio profesional dedicado a quienes hacen posible nuestro café. Únete a nuestra red para vender tu cosecha, optimizar tus ganancias y acceder a beneficios exclusivos en la tienda Mercacol.
+                </p>
+                <a href="https://mercacol.com.co/caficultores/" target="_blank" class="caficultores-btn btn-glow">
+                    <span>Regístrate Ahora</span>
+                    <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="caficultores-features">
+                <div class="caficultores-feature-card anim-hidden" style="transition-delay: 0.1s;">
+                    <div class="cf-icon"><i class="ph ph-storefront"></i></div>
+                    <h3>Vende tu Café</h3>
+                    <p>Conecta directamente con nosotros y asegura un mercado justo y transparente para tu cosecha de alta calidad.</p>
+                </div>
+                <div class="caficultores-feature-card anim-hidden" style="transition-delay: 0.2s;">
+                    <div class="cf-icon"><i class="ph ph-chart-line-up"></i></div>
+                    <h3>Simula y Proyecta</h3>
+                    <p>Utiliza nuestras herramientas avanzadas para simular precios en tiempo real y calcular la proyección de tus ganancias.</p>
+                </div>
+                <div class="caficultores-feature-card anim-hidden" style="transition-delay: 0.3s;">
+                    <div class="cf-icon"><i class="ph ph-arrows-left-right"></i></div>
+                    <h3>Canje por Insumos</h3>
+                    <p>Intercambia tu café por productos e insumos agrícolas de primera necesidad en la tienda Mercacol.</p>
+                </div>
+                <div class="caficultores-feature-card anim-hidden" style="transition-delay: 0.4s;">
+                    <div class="cf-icon"><i class="ph ph-star"></i></div>
+                    <h3>Precios Especiales</h3>
+                    <p>Accede a tarifas preferenciales y descuentos exclusivos diseñados para apoyar el crecimiento de tu finca.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="benefits-parallax">
         <div class="benefits-bg-img-blur"></div>
