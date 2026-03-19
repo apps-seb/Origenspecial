@@ -770,11 +770,13 @@
         }
 
         .panel-content.anim-hidden {
+            opacity: 0;
             transform: translateY(30px);
             filter: blur(5px);
             transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .panel-content.anim-show {
+            opacity: 1;
             transform: translateY(0);
             filter: blur(0);
         }
@@ -2021,7 +2023,6 @@
                         entry.target.classList.remove('anim-show');
                     }
                 });
-                }
             }, observerOptions);
 
             observerElements.forEach(el => observer.observe(el));
@@ -2156,7 +2157,6 @@
                         cartBody.appendChild(cartItemEl);
                     });
                 }
-                }
 
                 cartTotalPrice.textContent = `$ ${total.toLocaleString('es-CO')}`;
 
@@ -2230,7 +2230,6 @@
                         document.body.style.overflow = 'hidden'; 
                     }
                 });
-                }
             });
 
             modalBuyBtn.addEventListener('click', (e) => {
@@ -2281,14 +2280,12 @@
                                 // Evitar errores en consola si el navegador bloquea el autoplay inicial
                                 console.log("La reproducción automática fue pausada o bloqueada por el navegador.");
                             });
-                }
                         }
                     } else {
                         // Pausar el video cuando ya no se ve para ahorrar recursos del dispositivo
                         entry.target.pause();
                     }
                 });
-                }
             }, {
                 root: null,
                 rootMargin: '50px', // Empieza a cargar un poco antes de que entre a pantalla
