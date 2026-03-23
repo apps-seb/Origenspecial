@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alianza Estratégica B2B | Origen Special & Comité de Cafeteros</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --bg-dark: #141519;
+            --bg-card: #252730;
+            --gold: #e58d57;
+            --gold-light: #f4a575;
+            --gold-dark: #cc7a4a;
+            --text-main: #ffffff;
+            --text-muted: #9da1ad;
+            --b2b-institution: rgba(37, 39, 48, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--bg-card); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* Shared Animations */
+        .anim-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .anim-show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA Button Base */
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg-dark);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(229, 141, 87, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(229, 141, 87, 0.5);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        }
+
+        .btn-glow i {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-glow:hover i {
+            transform: translateX(4px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 32px;
+            background: transparent;
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Section Title Base */
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-align: center;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        /* Module 1: Hero Section */
+        .b2b-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 5%;
+            overflow: hidden;
+            text-align: center;
+            background-image: url('https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .b2b-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 21, 25, 0.95) 0%, rgba(37, 39, 48, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .b2b-badge {
+            background: rgba(229, 141, 87, 0.15);
+            color: var(--gold);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            border: 1px solid rgba(229, 141, 87, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        /* Module 2: Beneficios Duales */
+        .b2b-benefits {
+            padding: 100px 5%;
+            background: var(--bg-dark);
+            position: relative;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-col {
+            border-radius: 32px;
+            padding: 50px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-col:hover {
+            transform: translateY(-5px);
+        }
+
+        .col-producer {
+            background: linear-gradient(145deg, #1e2028, #252730);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .col-institution {
+            background: var(--b2b-institution);
+            border-color: rgba(229, 141, 87, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(229, 141, 87, 0.05);
+        }
+
+        .col-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .col-institution .col-header {
+            border-bottom-color: rgba(229, 141, 87, 0.1);
+        }
+
+        .col-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+
+        .col-institution .col-icon {
+            background: rgba(229, 141, 87, 0.1);
+            color: var(--gold);
+        }
+
+        .col-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .benefit-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .item-icon {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .col-institution .item-icon {
+            color: var(--gold-light);
+        }
+
+        .item-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .item-text p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Module 3: How it Works */
+        .b2b-how {
+            padding: 100px 5%;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #1a1c23 100%);
+            position: relative;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .step-card {
+            display: flex;
+            gap: 20px;
+            background: rgba(37, 39, 48, 0.4);
+            padding: 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            background: rgba(37, 39, 48, 0.8);
+            border-color: rgba(229, 141, 87, 0.2);
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, rgba(229, 141, 87, 0.1), rgba(229, 141, 87, 0.05));
+            border: 1px solid rgba(229, 141, 87, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .step-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Mockup CSS */
+        .mockup-wrapper {
+            position: relative;
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .mac-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+        }
+        .mac-dot.red { background: #ff5f56; }
+        .mac-dot.yellow { background: #ffbd2e; }
+        .mac-dot.green { background: #27c93f; }
+
+        .mockup-body {
+            background: #1a1b22;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.02);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Simulation Animation */
+        .sim-input {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+        }
+
+        .sim-input i { color: var(--gold); }
+
+        .sim-btn {
+            background: var(--gold);
+            color: #000;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+
+        .sim-result {
+            background: rgba(39, 201, 63, 0.1);
+            border: 1px solid rgba(39, 201, 63, 0.3);
+            padding: 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #27c93f;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: showResult 4s infinite;
+        }
+
+        @keyframes showResult {
+            0%, 40% { opacity: 0; transform: translateY(10px); }
+            50%, 90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(10px); }
+        }
+
+        .sim-typing {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--text-main);
+            animation: typing 4s steps(10) infinite;
+            color: var(--text-main);
+        }
+
+        @keyframes typing {
+            0%, 20% { width: 0; border-color: transparent; }
+            40%, 80% { width: 105px; border-color: var(--text-main); }
+            90%, 100% { width: 105px; border-color: transparent; }
+        }
+
+        .legal-text {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Module 4: Pilot and Scheduling */
+        .b2b-pilot {
+            padding: 100px 5%;
+            background: var(--bg-dark);
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pilot-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #1e2028, #252730);
+            border-radius: 32px;
+            padding: 60px;
+            border: 1px solid rgba(229, 141, 87, 0.15);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pilot-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+        }
+
+        .leader-profile {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold);
+            border: 2px solid rgba(229, 141, 87, 0.3);
+            overflow: hidden;
+        }
+
+        .leader-profile img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        .pilot-text {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .pilot-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Calendly Widget Container */
+        .calendly-inline-widget {
+            min-width: 320px;
+            height: 700px;
+            margin-top: 50px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .benefits-grid, .steps-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .b2b-hero { padding: 80px 5%; }
+            .benefit-col { padding: 40px 24px; }
+            .pilot-container { padding: 40px 24px; }
+            .pilot-actions { flex-direction: column; }
+            .btn-glow, .btn-outline { width: 100%; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Módulo 1: Hero -->
+    <section class="b2b-hero">
+        <div class="hero-content anim-hidden">
+            <div class="b2b-badge">
+                <i class="ph ph-handshake"></i> Propuesta de Alianza Estratégica B2B
+            </div>
+            <h1 class="hero-title">Aumentando el poder adquisitivo de las familias cafeteras.</h1>
+            <p class="hero-subtitle">Una integración tecnológica sin costo para el Comité que convierte la Cédula Cafetera en una llave de ahorros exclusivos en Mercacol.</p>
+            <a href="#agendar" class="btn-glow">
+                Conocer el Plan Piloto <i class="ph ph-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Módulo 2: Beneficios Duales -->
+    <section class="b2b-benefits" id="beneficios">
+        <h2 class="section-title anim-hidden">Valor Compartido</h2>
+        <p class="section-desc anim-hidden">Una solución tecnológica diseñada para generar impacto real tanto en el campo como en los indicadores de gestión de la institución.</p>
+
+        <div class="benefits-grid">
+            <!-- Columna Productor -->
+            <div class="benefit-col col-producer anim-hidden" style="transition-delay: 0.1s;">
+                <div class="col-header">
+                    <div class="col-icon"><i class="ph ph-user"></i></div>
+                    <h3 class="col-title">Para el Caficultor</h3>
+                </div>
+                <ul class="benefit-list">
+                    <li class="benefit-item">
+                        <i class="ph ph-wallet item-icon"></i>
+                        <div class="item-text">
+                            <h4>Ahorro directo y medible</h4>
+                            <p>Descuentos preferenciales en insumos y herramientas, maximizando su presupuesto en el día a día.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <i class="ph ph-device-mobile item-icon"></i>
+                        <div class="item-text">
+                            <h4>Cero fricción</h4>
+                            <p>Sin descargar apps ni crear cuentas complejas. Se utiliza únicamente su Cédula Cafetera o número de documento actual.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <i class="ph ph-shopping-cart item-icon"></i>
+                        <div class="item-text">
+                            <h4>Proceso habitual</h4>
+                            <p>La compra se realiza de la forma acostumbrada en la tienda, con el descuento aplicándose de forma automática en caja o carrito.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Columna Institución -->
+            <div class="benefit-col col-institution anim-hidden" style="transition-delay: 0.2s;">
+                <div class="col-header">
+                    <div class="col-icon"><i class="ph ph-bank"></i></div>
+                    <h3 class="col-title">Para el Comité de Cafeteros</h3>
+                </div>
+                <ul class="benefit-list">
+                    <li class="benefit-item">
+                        <i class="ph ph-currency-circle-dollar item-icon"></i>
+                        <div class="item-text">
+                            <h4>Cero costo de inversión</h4>
+                            <p>El desarrollo, la implementación tecnológica y el mantenimiento del plugin son asumidos al 100% por Mercacol.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <i class="ph ph-users-three item-icon"></i>
+                        <div class="item-text">
+                            <h4>Fidelización gremial</h4>
+                            <p>Entregar un beneficio tangible diario refuerza el sentido de pertenencia y la lealtad del asociado hacia su institución.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <i class="ph ph-chart-bar item-icon"></i>
+                        <div class="item-text">
+                            <h4>Reportes de impacto</h4>
+                            <p>Acceso a datos agregados claros sobre el ahorro total generado, ideal para incluir en sus informes de gestión social.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Módulo 3: ¿Cómo funciona? -->
+    <section class="b2b-how">
+        <h2 class="section-title anim-hidden">Tecnología Transparente</h2>
+        <p class="section-desc anim-hidden">Una integración sencilla, rápida y altamente segura en tres pasos.</p>
+
+        <div class="steps-container">
+            <div class="steps-list anim-hidden">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Identificación</h4>
+                        <p>El cajero o la plataforma online solicita al caficultor su documento de identidad o Cédula Cafetera en el momento del pago.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Validación Segura</h4>
+                        <p>Nuestro plugin consulta en tiempo real, mediante una conexión encriptada, el estado de afiliación activa del productor en la base de datos.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Beneficio Aplicado</h4>
+                        <p>Si la validación es exitosa, el sistema aplica automáticamente el "Descuento Alianza Cafetera". Sin cupones, sin papeleo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mockup Visual -->
+            <div class="mockup-wrapper anim-hidden" style="transition-delay: 0.2s;">
+                <div class="mockup-header">
+                    <div class="mac-dot red"></div>
+                    <div class="mac-dot yellow"></div>
+                    <div class="mac-dot green"></div>
+                </div>
+                <div class="mockup-body">
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">Sistema POS Mercacol</p>
+                    <div class="sim-input">
+                        <i class="ph ph-identification-card"></i>
+                        <span>Doc: <span class="sim-typing">1061...</span></span>
+                    </div>
+                    <div class="sim-btn">Verificar Afiliado</div>
+                    <div class="sim-result">
+                        <i class="ph ph-check-circle" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <div style="font-weight: 600;">Afiliado Activo</div>
+                            <div style="font-size: 0.85rem; opacity: 0.9;">Descuento 15% Aplicado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legal-text anim-hidden">
+            <i class="ph ph-lock-key"></i> Garantía de Privacidad: El sistema opera bajo estrictas normativas de protección de datos. Consulta el estado sin almacenar ni transferir información sensible de los agremiados.
+        </div>
+    </section>
+
+    <!-- Módulo 4: Piloto y Agendamiento -->
+    <section class="b2b-pilot" id="agendar">
+        <div class="pilot-container anim-hidden">
+            <div class="leader-profile">
+                <i class="ph ph-user"></i> <!-- Reemplazar con <img src="..."> si hay foto del líder -->
+            </div>
+            <h2 class="section-title">Iniciemos un piloto local</h2>
+            <p class="pilot-text">
+                Proponemos un despliegue inicial en <strong>Popayán de 3 meses</strong>. Nosotros aportamos el 100% de la tecnología y el soporte, ustedes validan el impacto económico y social en sus agremiados sin ningún riesgo.
+            </p>
+
+            <div class="pilot-actions">
+                <a href="#calendly" class="btn-glow">
+                    Agendar Demostración de 15 min
+                </a>
+                <a href="#" class="btn-outline">
+                    <i class="ph ph-download-simple"></i> Descargar Resumen Ejecutivo (PDF)
+                </a>
+            </div>
+
+            <!-- Calendly Inline Widget -->
+            <div id="calendly" class="calendly-inline-widget" data-url="https://calendly.com/tu-usuario/demostracion-alianza"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </section>
+
+    <script>
+        // Animaciones al hacer scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerElements = document.querySelectorAll('.anim-hidden');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('anim-show');
+                        observer.unobserve(entry.target); // Solo animar una vez
+                    }
+                });
+            }, observerOptions);
+
+            observerElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
