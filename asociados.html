@@ -335,7 +335,7 @@
 
       .cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 24px;
         max-width: 1100px;
         margin: 0 auto;
@@ -800,6 +800,10 @@
       }
 
       .btn-glow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
         padding: 18px 45px;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(15px);
@@ -817,7 +821,8 @@
           inset 0 0 0 1px rgba(255, 255, 255, 0.05);
         cursor: pointer;
         overflow: hidden;
-        white-space: nowrap;
+        white-space: normal;
+        text-align: center;
       }
 
       .btn-glow i {
@@ -842,13 +847,17 @@
         transition: all 0.6s ease;
       }
 
+      .hero-buy-btn:hover {
+        transform: translateX(-50%) translateY(-5px);
+      }
+
       .btn-glow:hover {
         background: rgba(255, 255, 255, 0.2);
         border-color: rgba(229, 141, 87, 0.5);
         box-shadow:
           0 15px 40px rgba(0, 0, 0, 0.4),
           inset 0 0 0 1px rgba(229, 141, 87, 0.2);
-        transform: translateX(-50%) translateY(-5px);
+        transform: translateY(-5px);
       }
 
       .btn-glow:hover::before {
@@ -1360,7 +1369,35 @@
         }
       }
 
+      /* Simulator Card Styles */
+      .simulador-card {
+        flex: 1;
+        min-width: 300px;
+        background: var(--bg-card);
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .estimacion-card {
+        margin-top: 30px;
+        background: var(--bg-dark);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(229, 141, 87, 0.2);
+        text-align: left;
+      }
+
       @media (max-width: 768px) {
+        .simulador-card {
+          padding: 20px;
+          min-width: 100%;
+        }
+
+        .estimacion-card {
+          padding: 20px;
+        }
+
         .modal-container {
           flex-direction: column;
           border-radius: 24px;
@@ -1676,16 +1713,7 @@
             economía de una familia cafetera promedio al utilizar su Cédula
             Cafetera para redimir bonos y descuentos.
           </p>
-          <div
-            style="
-              margin-top: 30px;
-              background: var(--bg-dark);
-              padding: 30px;
-              border-radius: 20px;
-              border: 1px solid rgba(229, 141, 87, 0.2);
-              text-align: left;
-            "
-          >
+          <div class="estimacion-card">
             <h3
               style="color: var(--gold); margin-bottom: 20px; font-size: 1.5rem"
             >
@@ -1873,16 +1901,7 @@
         "
       >
         <!-- Formulario Simulación -->
-        <div
-          style="
-            flex: 1;
-            min-width: 300px;
-            background: var(--bg-card);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-          "
-        >
+        <div class="simulador-card">
           <h3
             style="
               margin-bottom: 25px;
@@ -2017,16 +2036,7 @@
         </div>
 
         <!-- Carrito Simulado -->
-        <div
-          style="
-            flex: 1;
-            min-width: 300px;
-            background: var(--bg-card);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-          "
-        >
+        <div class="simulador-card">
           <h3
             style="
               margin-bottom: 25px;
