@@ -59,10 +59,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // More headers
         $headers .= 'From: Origen Special <asociados@mercacol.com.co>' . "\r\n";
         $headers .= 'Reply-To: asociados@mercacol.com.co' . "\r\n";
+        $headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
 
-        mail($to, $subject, $message, $headers);
-        echo "Correo enviado exitosamente.";
+        $success = mail($to, $subject, $message, $headers, "-fasociados@mercacol.com.co");
+
+        if ($success) {
+            echo json_encode(["status" => "success", "message" => "Correo enviado exitosamente."]);
+        } else {
+            http_response_code(500);
+            echo json_encode(["status" => "error", "message" => "Error al enviar el correo."]);
+        }
     } else {
+        http_response_code(400);
         echo "Datos inválidos.";
     }
 } else {
