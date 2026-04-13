@@ -1834,6 +1834,7 @@
       </div>
 
       <div
+        id="simulador-main-container"
         class="simulador-container anim-hidden"
         style="
           display: flex;
@@ -2124,131 +2125,27 @@
             <i class="ph ph-shopping-bag"></i>
           </button>
         </div>
+      </div>
 
-        <div
-          class="simulador-card"
-          id="step3-container"
-          style="display: none; text-align: center; transition: all 0.5s ease"
-        >
-          <div
-            style="
-              background: rgba(74, 222, 128, 0.1);
-              border: 1px solid rgba(74, 222, 128, 0.3);
-              border-radius: 20px;
-              padding: 30px;
-              margin-bottom: 30px;
-            "
-          >
-            <i
-              class="ph ph-seal-check"
-              style="color: #4ade80; font-size: 3rem; margin-bottom: 15px"
-            ></i>
-            <h3 style="color: #4ade80; font-size: 1.6rem; margin-bottom: 10px">
-              Asociado Verificado
-            </h3>
-            <p style="color: white; font-size: 1.2rem; font-weight: 600">
-              ¡Cupón Aplicado Exitosamente!
-            </p>
-          </div>
-
-          <div style="margin-bottom: 40px">
-            <p
-              style="
-                color: var(--text-muted);
-                font-size: 1.1rem;
-                line-height: 1.6;
-                max-width: 500px;
-                margin: 0 auto;
-              "
-            >
-              Entre más compras realices, más beneficios obtendrás. Sigue
-              utilizando tu cédula cafetera para acumular puntos en todas tus
-              compras.
-            </p>
-          </div>
-
-          <div
-            style="
-              background: linear-gradient(145deg, #1e2028, #252730);
-              border: 1px solid rgba(229, 141, 87, 0.2);
-              border-radius: 20px;
-              padding: 30px;
-              text-align: left;
-              max-width: 400px;
-              margin: 0 auto;
-              box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            "
-          >
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-              "
-            >
-              <div
-                style="
-                  font-size: 1.1rem;
-                  color: var(--text-main);
-                  font-weight: 500;
-                "
-              >
-                Puntos Disponibles
-              </div>
-              <div
-                style="
-                  background: rgba(229, 141, 87, 0.15);
-                  padding: 8px 12px;
-                  border-radius: 10px;
-                  color: var(--gold);
-                "
-              >
-                <i class="ph ph-star"></i> Nivel Oro
-              </div>
-            </div>
-            <div
-              style="
-                font-size: 3rem;
-                font-weight: 700;
-                color: var(--gold-light);
-                margin-bottom: 5px;
-              "
-            >
-              1,500
-            </div>
-            <div
-              style="
-                color: var(--text-muted);
-                font-size: 0.9rem;
-                margin-bottom: 20px;
-              "
-            >
-              Puntos redimibles en tu próxima compra
-            </div>
-
-            <a
-              href="https://mercacol.com.co"
-              target="_blank"
-              style="
-                text-decoration: none;
-                display: block;
-                text-align: center;
-                background: rgba(255, 255, 255, 0.05);
-                color: white;
-                padding: 12px;
-                border-radius: 10px;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                font-weight: 500;
-                transition: all 0.3s ease;
-              "
-              onmouseover="this.style.background = 'rgba(255,255,255,0.1)'"
-              onmouseout="this.style.background = 'rgba(255,255,255,0.05)'"
-            >
-              Ver Catálogo de Premios
-            </a>
-          </div>
-        </div>
+      <div
+        id="iframe-main-container"
+        style="
+          display: none;
+          width: 100%;
+          max-width: 1200px;
+          height: 80vh;
+          margin: 0 auto;
+          border-radius: 20px;
+          overflow: hidden;
+          border: 1px solid rgba(229, 141, 87, 0.2);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        "
+      >
+        <iframe
+          id="mercacol-iframe"
+          src=""
+          style="width: 100%; height: 100%; border: none"
+        ></iframe>
       </div>
       <script>
         document
@@ -2282,9 +2179,17 @@
         }
 
         function goToStep3() {
-          window.open("https://mercacol.com.co", "_blank");
-          document.getElementById("step2-container").style.display = "none";
-          document.getElementById("step3-container").style.display = "block";
+          document.getElementById("simulador-main-container").style.display =
+            "none";
+          document.getElementById("iframe-main-container").style.display =
+            "block";
+          document.getElementById("mercacol-iframe").src =
+            "https://mercacol.com.co";
+          document.getElementById("verifiedModal").classList.add("active");
+        }
+
+        function closeVerifiedModal() {
+          document.getElementById("verifiedModal").classList.remove("active");
         }
       </script>
     </section>
@@ -2350,6 +2255,149 @@
         </p>
       </div>
     </footer>
+
+    <div class="modal-overlay" id="verifiedModal">
+      <div
+        class="modal-container"
+        style="max-width: 500px; text-align: center; padding: 40px"
+      >
+        <button
+          class="modal-close"
+          onclick="closeVerifiedModal()"
+          style="
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+          "
+        >
+          <i class="ph ph-x"></i>
+        </button>
+        <div
+          style="
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+          "
+        >
+          <i
+            class="ph ph-seal-check"
+            style="color: #4ade80; font-size: 3rem; margin-bottom: 15px"
+          ></i>
+          <h3 style="color: #4ade80; font-size: 1.6rem; margin-bottom: 10px">
+            Asociado Verificado
+          </h3>
+          <p style="color: white; font-size: 1.2rem; font-weight: 600">
+            ¡Cupón Aplicado Exitosamente!
+          </p>
+        </div>
+
+        <div style="margin-bottom: 40px">
+          <p
+            style="
+              color: var(--text-muted);
+              font-size: 1.1rem;
+              line-height: 1.6;
+              max-width: 500px;
+              margin: 0 auto;
+            "
+          >
+            Entre más compras realices, más beneficios obtendrás. Sigue
+            utilizando tu cédula cafetera para acumular puntos en todas tus
+            compras.
+          </p>
+        </div>
+
+        <div
+          style="
+            background: linear-gradient(145deg, #1e2028, #252730);
+            border: 1px solid rgba(229, 141, 87, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 20px;
+            "
+          >
+            <div
+              style="
+                font-size: 1.1rem;
+                color: var(--text-main);
+                font-weight: 500;
+              "
+            >
+              Puntos Disponibles
+            </div>
+            <div
+              style="
+                background: rgba(229, 141, 87, 0.15);
+                padding: 8px 12px;
+                border-radius: 10px;
+                color: var(--gold);
+              "
+            >
+              <i class="ph ph-star"></i> Nivel Oro
+            </div>
+          </div>
+          <div
+            style="
+              font-size: 3rem;
+              font-weight: 700;
+              color: var(--gold-light);
+              margin-bottom: 5px;
+            "
+          >
+            1,500
+          </div>
+          <div
+            style="
+              color: var(--text-muted);
+              font-size: 0.9rem;
+              margin-bottom: 20px;
+            "
+          >
+            Puntos redimibles en tu próxima compra
+          </div>
+
+          <button
+            onclick="closeVerifiedModal()"
+            style="
+              width: 100%;
+              text-decoration: none;
+              display: block;
+              text-align: center;
+              background: rgba(255, 255, 255, 0.05);
+              color: white;
+              padding: 12px;
+              border-radius: 10px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              font-weight: 500;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            "
+            onmouseover="this.style.background = 'rgba(255,255,255,0.1)'"
+            onmouseout="this.style.background = 'rgba(255,255,255,0.05)'"
+          >
+            Ver Catálogo de Premios
+          </button>
+        </div>
+      </div>
+    </div>
 
     <div class="modal-overlay" id="productModal">
       <div class="modal-container">
