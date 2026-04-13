@@ -94,16 +94,9 @@
         gap: 10px;
       }
 
-      .logo-icon {
-        width: 32px;
-        height: 32px;
-        background: var(--bg-card);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--gold);
-        font-size: 1.1rem;
+      .logo img {
+        height: 50px;
+        width: auto;
       }
 
       .header-btn {
@@ -204,19 +197,19 @@
 
       /* Image sources assigned with z-index for stacking */
       .bg-1 {
-        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/03/e6fc9fb7-bbce-453b-afe9-acf78283c8db.jpeg");
+        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/04/IMG_7158-scaled.webp");
         z-index: 10;
       }
       .bg-2 {
-        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/03/0c898dc9-71d6-4c23-bcac-54909a748715.jpeg");
+        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/04/IMG_7160-scaled.webp");
         z-index: 11;
       }
       .bg-3 {
-        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/03/a13fdfb8-8c6c-40ed-90ad-f38aedc46db0.jpeg");
+        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/04/IMG_7165-scaled.webp");
         z-index: 20;
       }
       .bg-4 {
-        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/03/454346d6-6a52-422c-8bcb-a12fb0ee54cd.jpeg");
+        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/04/IMG_7171-scaled.webp");
         z-index: 21;
       }
 
@@ -442,7 +435,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg");
+        background-image: url("https://mercacol.com.co/wp-content/uploads/2026/04/IMG_7167-scaled.webp");
         background-size: cover;
         background-position: center;
         filter: blur(20px);
@@ -942,10 +935,9 @@
         margin-bottom: 20px;
       }
 
-      .footer-logo .logo-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.3rem;
+      .footer-logo img {
+        height: 60px;
+        width: auto;
       }
 
       .footer-links {
@@ -1519,8 +1511,10 @@
   <body>
     <header>
       <div class="logo">
-        <div class="logo-icon"><i class="ph ph-handshake"></i></div>
-        Origen Special | Alianzas
+        <img
+          src="https://mercacol.com.co/wp-content/uploads/2026/03/LOGO-ORIGEN-08.png"
+          alt="Origen Special Logo"
+        />
       </div>
       <a href="#simulador" class="header-btn">
         <i class="ph ph-play-circle"></i> Demostración en Vivo
@@ -1529,20 +1523,6 @@
 
     <div class="parallax-container">
       <section class="panel bg-1">
-        <video
-          class="hero-video lazy-video"
-          loop
-          muted
-          playsinline
-          preload="none"
-          poster="https://mercacol.com.co/wp-content/uploads/2026/03/e6fc9fb7-bbce-453b-afe9-acf78283c8db.jpeg"
-        >
-          <source
-            src="https://mercacol.com.co/wp-content/uploads/2026/03/gemini_generated_video_60C3A431.mov"
-            type="video/mp4"
-          />
-        </video>
-
         <div class="panel-content anim-hidden">
           <h1 class="panel-title">Sumamos Valor a la Cédula Cafetera</h1>
           <p class="panel-text" style="margin-bottom: 30px">
@@ -1558,20 +1538,6 @@
       </section>
 
       <section class="panel bg-2">
-        <video
-          class="hero-video lazy-video"
-          loop
-          muted
-          playsinline
-          preload="none"
-          poster="https://mercacol.com.co/wp-content/uploads/2026/03/0c898dc9-71d6-4c23-bcac-54909a748715.jpeg"
-        >
-          <source
-            src="https://mercacol.com.co/wp-content/uploads/2026/03/gemini_generated_video_11F92E45-1.mov"
-            type="video/mp4"
-          />
-        </video>
-
         <div class="panel-content anim-hidden">
           <h2 class="panel-title">Cero Fricción Tecnológica</h2>
           <p class="panel-text">
@@ -1654,28 +1620,6 @@
         </div>
       </div>
     </section>
-
-    <div class="parallax-container">
-      <section class="panel bg-3">
-        <div class="panel-content anim-hidden">
-          <h2 class="panel-title">Tradición Caucana</h2>
-          <p class="panel-text">
-            Un proceso artesanal. Lavado, secado al sol y tratado con el mayor
-            de los cuidados.
-          </p>
-        </div>
-      </section>
-
-      <section class="panel bg-4">
-        <div class="panel-content anim-hidden">
-          <h2 class="panel-title">Tueste Magistral</h2>
-          <p class="panel-text">
-            Nuestros maestros tostadores extraen los aceites esenciales exactos,
-            creando el equilibrio perfecto entre aroma y sabor.
-          </p>
-        </div>
-      </section>
-    </div>
 
     <div class="parallax-container">
       <section class="panel bg-3">
@@ -1828,7 +1772,7 @@
     <section class="benefits-parallax" style="padding: 100px 5%">
       <div class="benefits-bg-img-blur"></div>
       <img
-        src="https://mercacol.com.co/wp-content/uploads/2026/03/9c568e9f-acc1-4dd9-8a06-01fc9398f32b.jpeg"
+        src="https://mercacol.com.co/wp-content/uploads/2026/04/IMG_7167-scaled.webp"
         alt="Beneficios de Origen Special"
         class="benefits-bg-img"
         loading="lazy"
@@ -2195,8 +2139,10 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="footer-logo">
-            <div class="logo-icon"><i class="ph ph-handshake"></i></div>
-            Origen Special | Alianzas
+            <img
+              src="https://mercacol.com.co/wp-content/uploads/2026/03/LOGO-ORIGEN-08.png"
+              alt="Origen Special Logo"
+            />
           </div>
           <p>
             Una iniciativa de Mercacol para fortalecer el sector agrícola.
