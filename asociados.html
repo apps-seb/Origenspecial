@@ -449,7 +449,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         z-index: 1;
       }
 
@@ -1770,7 +1770,6 @@
     </section>
 
     <section class="benefits-parallax" style="padding: 100px 5%">
-      <div class="benefits-bg-img-blur"></div>
       <img
         src="https://mercacol.com.co/wp-content/uploads/2026/04/IMG_7173-scaled.webp"
         alt="Beneficios de Origen Special"
@@ -1822,7 +1821,15 @@
           display: block;
         "
       >
-        <span class="app-tag" style="margin: 0 auto 15px; display: inline-flex"
+        <span
+          class="app-tag"
+          style="
+            position: relative;
+            top: auto;
+            left: auto;
+            margin: 0 auto 15px;
+            display: inline-flex;
+          "
           ><i class="ph ph-play-circle"></i> DEMOSTRACIÓN EN VIVO</span
         >
         <h2 class="app-products-title">Integración en Tiempo Real</h2>
@@ -1944,6 +1951,33 @@
                 color: var(--text-muted);
                 font-size: 0.9rem;
               "
+              >Correo Electrónico</label
+            >
+            <input
+              type="email"
+              id="reg-email"
+              placeholder="Ej: correo@ejemplo.com"
+              style="
+                width: 100%;
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                background: rgba(0, 0, 0, 0.2);
+                color: white;
+                font-family: &quot;Poppins&quot;, sans-serif;
+                font-size: 1rem;
+              "
+            />
+          </div>
+
+          <div style="margin-bottom: 20px">
+            <label
+              style="
+                display: block;
+                margin-bottom: 10px;
+                color: var(--text-muted);
+                font-size: 0.9rem;
+              "
               >Cédula Cafetera</label
             >
             <input
@@ -2050,7 +2084,8 @@
                 color: var(--text-main);
               "
             >
-              Asociado Registrado
+              Bienvenido <span id="user-name-display"></span>,<br />Asociado
+              Registrado
             </h3>
             <p style="color: var(--text-muted); font-size: 1.1rem">
               Federación Nacional de Cafeteros
@@ -2263,10 +2298,11 @@
         function goToStep2() {
           const nombre = document.getElementById("reg-nombre").value;
           const telefono = document.getElementById("reg-telefono").value;
+          const email = document.getElementById("reg-email").value;
           const cedula = document.getElementById("reg-cedula").value;
           const btn = document.getElementById("reg-btn");
 
-          if (!nombre || !telefono || cedula.length < 5) {
+          if (!nombre || !telefono || !email || cedula.length < 5) {
             alert("Por favor complete todos los campos válidos.");
             return;
           }
@@ -2275,10 +2311,27 @@
             '<span>Verificando...</span><i class="ph ph-spinner ph-spin"></i>';
           btn.style.opacity = "0.7";
 
-          setTimeout(() => {
-            document.getElementById("step1-container").style.display = "none";
-            document.getElementById("step2-container").style.display = "block";
-          }, 1500);
+          const formData = new FormData();
+          formData.append("nombre", nombre);
+          formData.append("telefono", telefono);
+          formData.append("email", email);
+          formData.append("cedula", cedula);
+
+          fetch("register.php", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              console.log(data);
+            })
+            .catch((error) => console.error("Error:", error))
+            .finally(() => {
+              document.getElementById("user-name-display").textContent = nombre;
+              document.getElementById("step1-container").style.display = "none";
+              document.getElementById("step2-container").style.display =
+                "block";
+            });
         }
 
         function goToStep3() {
