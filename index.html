@@ -1343,9 +1343,404 @@
                 padding-top: 10px;
             }
         }
+
+        /* Sidebar Cart Styles */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 400px;
+            max-width: 100vw;
+            height: 100vh;
+            background: var(--bg-card);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+            z-index: 10000;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid rgba(229, 141, 87, 0.2);
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-header {
+            padding: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .cart-close:hover {
+            color: var(--text-main);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 16px;
+            background: rgba(20, 21, 25, 0.5);
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 1.2rem;
+            align-self: flex-start;
+            margin-left: auto;
+        }
+
+        .cart-footer {
+            padding: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-card);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .cart-checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border: none;
+            border-radius: 100px;
+            color: var(--bg-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(229, 141, 87, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(229, 141, 87, 0.4);
+        }
+
+        .empty-cart-msg {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 40px;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .empty-cart-msg i {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.1);
+        }
+
+        /* Cart Badge */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: var(--bg-dark);
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cart-badge.pop {
+            transform: scale(1.3);
+        }
+
+        .header-btn {
+            position: relative; /* For badge positioning */
+        }
+
+        /* Innovations Section */
+        .innovations-section {
+            position: relative;
+            z-index: 25;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #1a1c23 100%);
+            padding: 100px 5%;
+        }
+
+        .innovations-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .innovations-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .innovations-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .innovations-list {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .innovation-item {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .innovation-item.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .innovation-images {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+
+        .innovation-img-main {
+            width: 60%;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .innovation-img-sub {
+            width: 45%;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: absolute;
+            right: 0;
+            bottom: -30px;
+            border: 4px solid var(--bg-dark);
+            transition: transform 0.5s ease;
+        }
+
+        .innovation-item.reverse .innovation-img-sub {
+            right: auto;
+            left: 0;
+        }
+
+        .innovation-item:hover .innovation-img-main {
+            transform: translateY(-10px);
+        }
+
+        .innovation-item:hover .innovation-img-sub {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .innovation-content {
+            flex: 1;
+        }
+
+        .innovation-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229, 141, 87, 0.1);
+            color: var(--gold);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .innovation-content h3 {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .innovation-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .innovation-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+
+        .innovation-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: var(--bg-card);
+            border: 1px solid rgba(229, 141, 87, 0.3);
+            color: var(--text-main);
+            border-radius: 100px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .innovation-btn:hover {
+            background: rgba(229, 141, 87, 0.1);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 900px) {
+            .innovation-item, .innovation-item.reverse {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .innovation-images {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 40px;
+            }
+            .innovation-img-main {
+                width: 70%;
+            }
+            .innovation-img-sub {
+                width: 50%;
+            }
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="ph ph-shopping-cart"></i> Tu Carrito</h2>
+            <button class="cart-close" id="closeCartBtn"><i class="ph ph-x"></i></button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Items injected by JS -->
+            <div class="empty-cart-msg">
+                <i class="ph ph-shopping-bag"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$ 0</span>
+            </div>
+            <button class="cart-checkout-btn">
+                Finalizar Compra <i class="ph ph-check-circle"></i>
+            </button>
+        </div>
+    </div>
+
 
     <header>
         <div class="logo">
@@ -1507,6 +1902,51 @@
         </div>
     </section>
 
+
+    <!-- Innovations Section -->
+    <section class="innovations-section" id="innovacion">
+        <div class="innovations-header anim-hidden">
+            <h2 class="innovations-title">Nuevas Formas de Disfrutar</h2>
+            <p class="innovations-subtitle">Descubre nuestra línea de productos innovadores. La misma calidad de Origen Special, ahora en formatos diseñados para tu estilo de vida moderno.</p>
+        </div>
+
+        <div class="innovations-list">
+            <!-- Product 1: Capsules -->
+            <div class="innovation-item anim-hidden" style="transition-delay: 0.1s;">
+                <div class="innovation-images">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/capsulaS.webp" alt="Cápsulas de Café Especialidad" class="innovation-img-main" loading="lazy">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/freepik__genera-una-variacion-de-este-producto-conservando-__95397-scaled.webp" alt="Detalle Cápsulas" class="innovation-img-sub" loading="lazy">
+                </div>
+                <div class="innovation-content">
+                    <span class="innovation-tag"><i class="ph ph-recycle"></i> 100% RECICLABLES</span>
+                    <h3>Cápsulas de Especialidad. El Cauca en un instante.</h3>
+                    <p>Experimenta la practicidad sin comprometer el sabor. Nuestras cápsulas, compatibles con las máquinas más populares, están llenas de nuestro mejor café seleccionado de los distintos municipios productores del Cauca. Una taza perfecta, consistente y respetuosa con el medio ambiente gracias a su diseño totalmente reciclable. Profesionalismo y sabor en cada extracción.</p>
+                    <div class="innovation-price">$ 25.000 <span>/ Caja x 10</span></div>
+                    <button class="innovation-btn open-modal-btn" data-id="4">
+                        <i class="ph ph-shopping-cart"></i> Ver y Comprar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product 2: Canned Drink -->
+            <div class="innovation-item reverse anim-hidden" style="transition-delay: 0.2s;">
+                <div class="innovation-images">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/freepik__genera-una-variacion-de-este-producto-conservando-__95400.webp" alt="Bebida Refrescante de Café" class="innovation-img-main" loading="lazy">
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/freepik__genera-una-variacion-de-este-producto-conservando-__95403-scaled.webp" alt="Detalle Bebida" class="innovation-img-sub" loading="lazy">
+                </div>
+                <div class="innovation-content">
+                    <span class="innovation-tag"><i class="ph ph-drop"></i> ULTRA REFRESCANTE</span>
+                    <h3>Cold Brew en Lata. Energía natural donde vayas.</h3>
+                    <p>¿Calor? ¿Cansancio? Tenemos la solución perfecta. Disfruta de una explosión refrescante de energía con nuestra nueva bebida a base de café frío en lata. Extraído lentamente para resaltar sus notas más dulces y suaves, este Cold Brew es el compañero ideal para tus días más activos. Listo para beber, súper refrescante y deliciosamente adictivo.</p>
+                    <div class="innovation-price">$ 8.500 <span>/ Lata 250ml</span></div>
+                    <button class="innovation-btn open-modal-btn" data-id="5">
+                        <i class="ph ph-shopping-cart"></i> Ver y Comprar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="app-products-section" id="comprar">
         <div class="app-products-header anim-hidden">
             <div>
@@ -1567,6 +2007,44 @@
                             <span>$</span> 120.000
                         </div>
                         <button class="app-add-btn">
+                            <i class="ph ph-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-product-card anim-hidden" style="transition-delay: 0.4s;">
+                <div class="app-product-image-wrap">
+                    <span class="app-tag"><i class="ph ph-recycle"></i> RECICLABLE</span>
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/capsulaS.webp" alt="Caja de Cápsulas x10" loading="lazy">
+                </div>
+                <div class="app-product-info">
+                    <h3>Cápsulas Especiales x10</h3>
+                    <p>Compatible Nespresso • Origen Cauca</p>
+                    <div class="app-product-footer">
+                        <div class="app-price">
+                            <span>$</span> 25.000
+                        </div>
+                        <button class="app-add-btn open-modal-btn" data-id="4">
+                            <i class="ph ph-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-product-card anim-hidden" style="transition-delay: 0.5s;">
+                <div class="app-product-image-wrap">
+                    <span class="app-tag"><i class="ph ph-drop"></i> REFRESCANTE</span>
+                    <img src="https://mercacol.com.co/wp-content/uploads/2026/03/freepik__genera-una-variacion-de-este-producto-conservando-__95400.webp" alt="Cold Brew Lata" loading="lazy">
+                </div>
+                <div class="app-product-info">
+                    <h3>Cold Brew Lata 250ml</h3>
+                    <p>Bebida Fría • Energía Natural</p>
+                    <div class="app-product-footer">
+                        <div class="app-price">
+                            <span>$</span> 8.500
+                        </div>
+                        <button class="app-add-btn open-modal-btn" data-id="5">
                             <i class="ph ph-plus"></i>
                         </button>
                     </div>
@@ -1671,7 +2149,7 @@
                     </div>
                 </div>
 
-                <a href="#" class="modal-buy-btn">
+                <a href="#" class="modal-buy-btn" id="modalAddToCartBtn">
                     <i class="ph ph-shopping-cart"></i> Añadir al Carrito
                 </a>
             </div>
@@ -1711,6 +2189,7 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalSubtitle = document.getElementById('modalSubtitle');
             const modalPrice = document.getElementById('modalPrice');
+            const modalDesc = document.getElementById('modalDesc');
 
             const productsData = [
                 {
@@ -1720,7 +2199,8 @@
                     price: '35.000',
                     tagIcon: 'ph-crown',
                     tagText: 'PREMIUM',
-                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg'
+                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg',
+                    desc: 'Disfruta de la mejor calidad con nuestro café premium. Cultivado en las montañas del Cauca para brindar una experiencia sensorial inigualable con notas a chocolate y cítricos.'
                 },
                 {
                     id: 2,
@@ -1729,7 +2209,8 @@
                     price: '65.000',
                     tagIcon: 'ph-star',
                     tagText: 'MÁS VENDIDO',
-                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg'
+                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg',
+                    desc: 'El tamaño favorito de nuestros clientes. Disfruta de la mejor calidad con nuestro café premium. Cultivado en las montañas del Cauca.'
                 },
                 {
                     id: 3,
@@ -1738,26 +2219,49 @@
                     price: '120.000',
                     tagIcon: 'ph-timer',
                     tagText: 'LIMITADO',
-                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg'
+                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/91f3b12f-bdc7-4051-83c2-dd349b84b981.jpeg',
+                    desc: 'Ideal para los que no quieren quedarse sin su taza diaria. Tueste oscuro perfecto para espresso.'
+                },
+                {
+                    id: 4,
+                    title: 'Cápsulas Especiales x10',
+                    subtitle: 'Compatible Nespresso • Origen Cauca',
+                    price: '25.000',
+                    tagIcon: 'ph-recycle',
+                    tagText: 'RECICLABLE',
+                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/capsulaS.webp',
+                    desc: 'Experimenta la practicidad sin comprometer el sabor. Nuestras cápsulas están llenas de nuestro mejor café seleccionado de los distintos municipios productores del Cauca. Una taza perfecta y respetuosa con el medio ambiente gracias a su diseño totalmente reciclable.'
+                },
+                {
+                    id: 5,
+                    title: 'Cold Brew Lata 250ml',
+                    subtitle: 'Bebida Fría • Energía Natural',
+                    price: '8.500',
+                    tagIcon: 'ph-drop',
+                    tagText: 'REFRESCANTE',
+                    imgSrc: 'https://mercacol.com.co/wp-content/uploads/2026/03/freepik__genera-una-variacion-de-este-producto-conservando-__95400.webp',
+                    desc: '¿Calor? ¿Cansancio? Disfruta de una explosión refrescante de energía con nuestra nueva bebida a base de café frío en lata. Extraído lentamente para resaltar sus notas más dulces y suaves. Listo para beber y deliciosamente adictivo.'
                 }
             ];
 
-            productCards.forEach((card, index) => {
-                card.style.cursor = 'pointer';
-                card.addEventListener('click', () => {
-                    const data = productsData[index];
-                    if (data) {
-                        modalTitle.textContent = data.title;
-                        modalSubtitle.textContent = data.subtitle;
-                        modalPrice.innerHTML = `<span>$</span> ${data.price}`;
-                        modalTag.innerHTML = `<i class="ph ${data.tagIcon}"></i> ${data.tagText}`;
-                        modalImg.src = data.imgSrc;
+            let currentModalProductId = null;
 
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden'; 
-                    }
-                });
-            });
+            const openModalForProduct = (id) => {
+                const data = productsData.find(p => p.id == id);
+                if (data) {
+                    currentModalProductId = data.id;
+                    modalTitle.textContent = data.title;
+                    modalSubtitle.textContent = data.subtitle;
+                    modalPrice.innerHTML = `<span>$</span> ${data.price}`;
+                    modalTag.innerHTML = `<i class="ph ${data.tagIcon}"></i> ${data.tagText}`;
+                    modalImg.src = data.imgSrc;
+
+                    if (modalDesc) modalDesc.textContent = data.desc;
+
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            };
 
             const closeModal = () => {
                 modal.classList.remove('active');
@@ -1777,9 +2281,121 @@
                     closeModal();
                 }
             });
-        });
 
-        // Optimización Premium de UX: Lazy Loading Inteligente para Videos
+            // Bind app-product-cards
+            productCards.forEach((card, index) => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', (e) => {
+                    // Si se hizo click en el botón de añadir explícitamente, no abrir el modal si no es necesario (aunque en este diseño lo abriremos)
+                    openModalForProduct(index + 1);
+                });
+            });
+
+            // Bind new specific buttons (Innovations buttons)
+            document.querySelectorAll('.open-modal-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evitar que dispare el evento de la tarjeta si está dentro
+                    const id = btn.getAttribute('data-id');
+                    if(id) {
+                        openModalForProduct(id);
+                    }
+                });
+            });
+
+            // Cart Logic
+            let cart = [];
+
+            const cartSidebar = document.getElementById('cartSidebar');
+            const cartOverlay = document.getElementById('cartOverlay');
+            const closeCartBtn = document.getElementById('closeCartBtn');
+            const openCartBtn = document.getElementById('openCartHeaderBtn');
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartBadge = document.getElementById('cartBadge');
+            const modalAddToCartBtn = document.getElementById('modalAddToCartBtn');
+
+            const toggleCart = () => {
+                cartSidebar.classList.toggle('active');
+                cartOverlay.classList.toggle('active');
+            };
+
+            if(openCartBtn) openCartBtn.addEventListener('click', toggleCart);
+            if(closeCartBtn) closeCartBtn.addEventListener('click', toggleCart);
+            if(cartOverlay) cartOverlay.addEventListener('click', toggleCart);
+
+            const updateCartUI = () => {
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = `
+                        <div class="empty-cart-msg">
+                            <i class="ph ph-shopping-bag"></i>
+                            <p>Tu carrito está vacío</p>
+                        </div>
+                    `;
+                    if(cartBadge) cartBadge.style.display = 'none';
+                    if(cartTotal) cartTotal.textContent = '$ 0';
+                    return;
+                }
+
+                if(cartBadge) {
+                    cartBadge.style.display = 'flex';
+                    cartBadge.textContent = cart.length;
+                    cartBadge.classList.add('pop');
+                    setTimeout(() => cartBadge.classList.remove('pop'), 300);
+                }
+
+                cart.forEach((item, index) => {
+                    // Remove dots from price strings to calculate total
+                    const priceNum = parseInt(item.price.replace(/\./g, ''));
+                    total += priceNum;
+
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'cart-item';
+                    itemEl.innerHTML = `
+                        <img src="${item.imgSrc}" alt="${item.title}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.title}</div>
+                            <div class="cart-item-price">$ ${item.price}</div>
+                        </div>
+                        <button class="cart-item-remove" data-index="${index}"><i class="ph ph-trash"></i></button>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+
+                if(cartTotal) {
+                    // Formatear el total con separadores de miles (formato colombiano)
+                    cartTotal.textContent = `$ ${total.toLocaleString('es-CO')}`;
+                }
+
+                document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idx = e.currentTarget.getAttribute('data-index');
+                        cart.splice(idx, 1);
+                        updateCartUI();
+                    });
+                });
+            };
+
+            if(modalAddToCartBtn) {
+                modalAddToCartBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if(currentModalProductId) {
+                        const product = productsData.find(p => p.id == currentModalProductId);
+                        if(product) {
+                            cart.push(product);
+                            updateCartUI();
+                            closeModal();
+                            setTimeout(() => {
+                                toggleCart();
+                            }, 300); // Wait a bit for modal to close smoothly before opening cart
+                        }
+                    }
+                });
+            }
+
+            // Optimización Premium de UX: Lazy Loading Inteligente para Videos
         window.addEventListener('load', () => {
             const videos = document.querySelectorAll('.lazy-video');
             
